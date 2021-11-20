@@ -1,22 +1,19 @@
 {
-  "name": "backend",
+  "name": "nodejs-crud-app",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "description": "basic crud app with node,mongo and express",
+  "main": "server.js",
+  "scripts": {
+    "prod": "node server",
+    "watch": "nodemon server --ignore public/",
+    "start": "npm run watch"
+  },
+  "author": "Ritesh Kulkarni",
+  "license": "ISC",
   "dependencies": {
-    "cookie-parser": "^1.4.5",
-    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "mongoose": "^6.0.12",
-    "morgan": "^1.10.0",
-    "nodemon": "^2.0.15"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "author": "",
-  "license": "ISC"
+    "nodemon": "^2.0.14"
+  }
 }
