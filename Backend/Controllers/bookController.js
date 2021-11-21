@@ -1,6 +1,7 @@
 const mongo=require("mongoose");
 
 const Users=mongo.model('users');
+const book=mongo.model('bookings');
 exports.baseRoute= async(req,res)=>{
     res.send('Server Running');
 }
@@ -26,19 +27,24 @@ exports.adduser= async(req,res)=>{
 }
 
 exports.getuserdata=async(req,res)=>{
-  let mail=req.params.email;
-  await Users.findById({email:mail},(err,data)=>{
+  let mail=req.param.email;
+  await Users.find({ 'email': { $eq:mail  }},(err,data)=>{
       if(err){
           res.status(500).json({
               message:"error",
           });
 
       }else{
-          console.log(data);
+          console.log(data.password);
           res.status(200).json({
               message:"user found",
-              data
+              //data
           });
       }
   });
+}
+
+exports.getbookings= async(req,res)=>{
+  const book=await bookings.find();
+  res.json(book);
 }

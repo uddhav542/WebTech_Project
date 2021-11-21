@@ -70,7 +70,15 @@ app.post('/adduser',userController.adduser);
 app.get('/flights', function (req, res) {
   res.send(flights);
 });
-app.get('/getuser',userController.getuserdata)
+app.get('/getuser/:email',userController.getuserdata)
+//app.get('/getbookings',userController.getbookings);
+const Books=mongo.model('bookings');
+app.get('/getbookings', (req, res) => {
+  Books.find((err, docs) => {
+      if (!err) { res.send(docs); }
+      else { console.log('Error in Retriving Employees :' + JSON.stringify(err, undefined, 2)); }
+  });
+});
 app.param('Departure', function(req, res, next, Departure) {
   const modified = Departure;
 
