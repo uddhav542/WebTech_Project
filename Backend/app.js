@@ -27,7 +27,7 @@ app.use((req, res, next) => {
 });
 
 // import our routes
-const routes = require('./Routes/booksRoute');
+const routes = require('./Routes/FlightRoute');
 // middleware to use our routes
 app.use('/', routes);
 

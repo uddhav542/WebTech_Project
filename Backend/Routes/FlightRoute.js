@@ -1,11 +1,11 @@
 const express=require('express');
 const router=express.Router();
 
-const bookController=require('../Controllers/FlightController');
+const flightController=require('../Controllers/FlightController');
 
-router.post('/insert',bookController.addbook);
+router.post('/insert',flightController.addbook);
 
-router.get('/getflights/:source/:destination', bookController.getsinglebook);
+router.get('/flights/:source/:destination', flightController.getsinglebook);
 
 
 module.exports=router;

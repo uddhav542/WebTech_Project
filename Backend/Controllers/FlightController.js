@@ -12,9 +12,9 @@ exports.getbooks= async(req,res)=>{
     }
 exports.addbook= async(req,res)=>{
    let book=({
-	   title:req.body.title,
-	   author:req.body.author,
-	   desc:req.body.desc,
+	   Departure:req.body.Departure,
+	   Arrival:req.body.Arrival,
+	   Price:req.body.Price,
    });
     await new Books(book).save((err,data)=>{
         if(err){
