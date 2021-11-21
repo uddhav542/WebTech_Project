@@ -1,6 +1,7 @@
 const mongo=require("mongoose");
 
-const Books=mongo.model('books');
+const Flights=mongo.model('bookings');
+
 
 exports.baseRoute= async(req,res)=>{
     res.send('Server Running');
@@ -12,11 +13,15 @@ exports.getbooks= async(req,res)=>{
     }
 exports.addbook= async(req,res)=>{
    let book=({
-	   Departure:req.body.Departure,
-	   Arrival:req.body.Arrival,
-	   Price:req.body.Price,
+     Departure:req.body.Departure,
+     Arrival:req.body.Arrival,
+     Price:req.body.Price,
+     Duration:req.body.Duration,
+     AirLine:req.body.AirLine,
+     DepartureTime:req.body.DepartureTime,
+     ArrivalTime:req.body.ArrivalTime
    });
-    await new Books(book).save((err,data)=>{
+    await new Flights(book).save((err,data)=>{
         if(err){
             res.status(500).json({
                 message:"Something went wrong,please try again later.",
@@ -31,10 +36,13 @@ exports.addbook= async(req,res)=>{
         }
     });
 }
+
+
+
 exports.getsinglebook=async(req,res)=>{
     let book_id=req.params.source;
 	  let book_id1=req.params.destination;
-    await Books.findById({_source:book_id},(err,data)=>{
+    await Flights.findById({_source:book_id},(err,data)=>{
         if(err){
             res.status(500).json({
                 message:"error",

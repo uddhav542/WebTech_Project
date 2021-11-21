@@ -1,26 +1,29 @@
 const mongo=require("mongoose");
 mongo.Promise=global.Promise;
 //book schema
-const bookschema=new mongo.Schema({
-    email:{
+const flightschema=new mongo.Schema({
+    Departure:{
         type:String
     },
-    source:{
+    Arrival:{
         type:String
     },
-    destination:{
+    Price:{
         type:String
     },
-	arrival_time:{
-        type:Date
-    },
-	departure_time:{
-        type:Date
-    },
-	date:{
-		type:Date
+    Duration:{
+		type:String
 	},
+	AirLine:{
+        type:String
+    },
+	DepartureTime:{
+        type:String
+    },
+	ArrivalTime:{
+        type:String
+    },
 	
 });
 
-module.exports=mongo.model('books',bookschema);
+module.exports=mongo.model('bookings',flightschema);
