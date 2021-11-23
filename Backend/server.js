@@ -105,7 +105,14 @@ app.post('/adduser',userController.adduser);
 app.get('/flights', function (req, res) {
   res.send(flights);
 });
-app.get('/getuser/:email',userController.getuserdata)
+const U=mongo.model('users');
+app.get('/getuser', (req,res)=> {
+  U.find((err, docs) => {
+    if (!err) { res.send(docs); }
+    else { console.log('Error in Retriving Employees :' + JSON.stringify(err, undefined, 2)); }
+});
+});
+//app.get('/getuser/:email',userController.getuserdata)
 //app.get('/getbookings',userController.getbookings);
 const Books=mongo.model('bookings');
 app.get('/getbookings', (req, res) => {
@@ -154,6 +161,10 @@ app.get('/flights/:Departure/:Arrival', function(req, res) {
     
 });
 
+const AuthRoute = require('./Routes/authRoute')
+
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })
+
+app.use('/api',AuthRoute)

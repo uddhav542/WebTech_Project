@@ -6,7 +6,7 @@ const userController=require('../Controllers/bookController')
 
 router.post('/insert',flightController.addbook);
 router.post('/adduser',userController.adduser);
-router.get('/getuser/:email',userController.getuserdata);
+//router.get('/getuser/',userController.getuserdata);
 router.get('/flights/:source/:destination', flightController.getsinglebook);
 
 

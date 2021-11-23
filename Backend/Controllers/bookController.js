@@ -26,23 +26,10 @@ exports.adduser= async(req,res)=>{
    });
 }
 
-exports.getuserdata=async(req,res)=>{
-  let mail=req.param.email;
-  await Users.find({ 'email': { $eq:mail  }},(err,data)=>{
-      if(err){
-          res.status(500).json({
-              message:"error",
-          });
-
-      }else{
-          console.log(data.password);
-          res.status(200).json({
-              message:"user found",
-              //data
-          });
-      }
-  });
-}
+// exports.getuserdata()=async(req,res)=>{
+//     const book=await users.find();
+//     res.json(book);
+// }
 
 exports.getbookings= async(req,res)=>{
   const book=await bookings.find();
