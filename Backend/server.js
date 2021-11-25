@@ -112,15 +112,73 @@ app.get('/getuser', (req,res)=> {
     else { console.log('Error in Retriving Employees :' + JSON.stringify(err, undefined, 2)); }
 });
 });
+
+app.get('/getuser/:email', (req,res)=> {
+
+  var username = req.params.email;
+  console.log(username);
+  U.find({email:username})
+    .then(user=>{
+        if(user){
+            res.json({
+                user
+            })
+        }
+        else{
+            res.json({
+                "email":"",
+                "Departure":Departure,
+                "Arrival":Arrival,
+            })
+        }
+
+    })
+});
 //app.get('/getuser/:email',userController.getuserdata)
 //app.get('/getbookings',userController.getbookings);
 const Books=mongo.model('bookings');
-app.get('/getbookings', (req, res) => {
-  Books.find((err, docs) => {
-      if (!err) { res.send(docs); }
-      else { console.log('Error in Retriving Employees :' + JSON.stringify(err, undefined, 2)); }
-  });
+app.get('/getbookings/:email', (req, res) => {
+  var username = req.params.email;
+  console.log(username);
+  Books.find({Email:username})
+    .then(user=>{
+        if(user){
+            res.json({
+                user
+            })
+        }
+        else{
+            res.json({
+                "email":"",
+                "Departure":Departure,
+                "Arrival":Arrival,
+            })
+        }
+
+    })
 });
+
+app.get('/getbookings/:email', (req, res) => {
+  var username = req.params.email;
+  console.log(username);
+  U.find({Email:username})
+    .then(user=>{
+        if(user){
+            res.json({
+                user
+            })
+        }
+        else{
+            res.json({
+                "email":"",
+                "Departure":Departure,
+                "Arrival":Arrival,
+            })
+        }
+
+    })
+});
+
 app.param('Departure', function(req, res, next, Departure) {
   const modified = Departure;
 

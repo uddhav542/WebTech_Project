@@ -2,6 +2,9 @@ const mongo=require("mongoose");
 mongo.Promise=global.Promise;
 //book schema
 const flightschema=new mongo.Schema({
+    Email:{
+        type:String
+    },
     Departure:{
         type:String
     },

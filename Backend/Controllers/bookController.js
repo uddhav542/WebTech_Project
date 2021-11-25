@@ -7,6 +7,7 @@ exports.baseRoute= async(req,res)=>{
 }
 exports.adduser= async(req,res)=>{
   let data=({
+    username:req.body.username,
     email:req.body.email,
     password:req.body.password,
   });

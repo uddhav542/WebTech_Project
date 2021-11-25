@@ -13,6 +13,7 @@ exports.getbooks= async(req,res)=>{
     }
 exports.addbook= async(req,res)=>{
    let book=({
+     Email:req.body.Email,
      Departure:req.body.Departure,
      Arrival:req.body.Arrival,
      Price:req.body.Price,
